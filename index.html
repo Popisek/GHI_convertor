@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Bradavický GHI batoh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div id="sidebarHeader">
+            <img src="logo.png" alt="Bradavický znak" class="avatar">
+            <h2>Bradavický GHI batoh</h2>
+            <p class="subtitle">Bradavický expres na učebnice</p>
+        </div>
+        <button id="backButton" class="back-button" onclick="goBack()" style="display:none">ZPĚT</button>
+        <div class="list-panel" id="sidebar"></div>
+    </aside>
+
+    <main class="main">
+        <section class="intro" id="introSection">
+            <h2>Jak používat GHI batoh 🧳 ✨</h2>
+            <p>Tato stránka slouží k jednoduchému načtení a zobrazení obsahu GHI batohu ze hry <strong>Bradavice Online</strong>. Stačí udělat jen pár kroků:</p>
+            <ol>
+                <li><strong>Najděte soubor</strong> <code>GHI.lua</code><br>
+                    Tento soubor se automaticky ukládá ve složce s vaším účtem. Obvykle ho najdete zde:<br>
+                    <code>C:\Cesta ke hře\Bradavice Online\WTF\Account\Jmeno_uctu\bradavice online\Postava\SavedVariables\GHI.lua</code>
+                </li>
+                <li><strong>Nahrajte soubor</strong><br>
+                    Klikněte na tlačítko <em>Vybrat soubor</em> a nahrajte svůj <code>GHI.lua</code>. Stránka jej zpracuje automaticky.
+                </li>
+                <li><strong>Prohlížejte obsah</strong><br>
+                    Po načtení se zobrazí seznam knih. Klikněte na název a čtěte.
+                </li>
+            </ol>
+            <hr>
+            <h3>Vyberte váš GHI.lua soubor uložený z Bradavic</h3>
+            <p class="small">Obsah knihy se zobrazí zde, a můžete si ho přehledně prohlížet v čitelném formátu.</p>
+            <input type="file" id="luaFile" accept=".lua">
+            <button onclick="loadLuaFile()">Převést</button>
+        </section>
+
+        <div class="container" style="display:none">
+            <div id="sidebar" class="list-panel"></div>
+            <div id="content" class="content-panel"></div>
+        </div>
+
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
