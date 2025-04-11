@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="dark-mode"></body>
 <body>
 <div class="layout">
     <aside class="sidebar">
@@ -14,7 +15,7 @@
             <h2>Bradavický GHI batoh</h2>
             <p class="subtitle">Bradavický expres na učebnice</p>
         </div>
-        <button id="backButton" class="back-button" onclick="goBack()" style="display:none">ZPĚT</button>
+        <button id="backButton" class="back-button" onclick="mainPage()" style="display:none">ZPĚT</button>
         <div class="list-panel" id="sidebar"></div>
     </aside>
 
@@ -25,7 +26,7 @@
             <ol>
                 <li><strong>Najděte soubor</strong> <code>GHI.lua</code><br>
                     Tento soubor se automaticky ukládá ve složce s vaším účtem. Obvykle ho najdete zde:<br>
-                    <code>C:\Cesta ke hře\Bradavice Online\WTF\Account\Jmeno_uctu\bradavice online\Postava\SavedVariables\GHI.lua</code>
+                    <code>C:\Cesta ke hře\Bradavice Online\WTF\Account\Jméno_účtu\Bradavice Online\Postava\SavedVariables\GHI.lua</code>
                 </li>
                 <li><strong>Nahrajte soubor</strong><br>
                     Klikněte na tlačítko <em>Vybrat soubor</em> a nahrajte svůj <code>GHI.lua</code>. Stránka jej zpracuje automaticky.
@@ -46,7 +47,7 @@
             <div id="content" class="content-panel"></div>
         </div>
 
-        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+        <button id="themeToggle" onclick="toggleTheme()">🌞</button>
     </main>
 </div>
 

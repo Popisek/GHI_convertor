@@ -9,23 +9,50 @@ function loadFile() {
     reader.onload = function (e) {
         parseText(e.target.result);
         renderSidebar();
-        document.querySelector('.container').style.display = 'flex';
-        document.getElementById('sidebar').style.display = 'block';
-        document.getElementById('introSection').style.display = 'none';
-        document.getElementById('backButton').style.display = 'block';
-        document.getElementById('sidebarHeader').style.display = 'none';
+
+        const intro = document.getElementById('introSection');
+        const container = document.querySelector('.container');
+
+        intro.classList.remove('slide-fade-in', 'slide-fade-out');
+        container.classList.remove('slide-fade-in', 'slide-fade-out');
+
+        intro.classList.add('slide-fade-out');
+
+        setTimeout(() => {
+            intro.style.display = 'none';
+
+            container.style.display = 'flex';
+            container.classList.add('slide-fade-in');
+
+            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('backButton').style.display = 'block';
+            document.getElementById('sidebarHeader').style.display = 'none';
+        }, 500);
     };
     reader.readAsText(file);
 }
 
-function goBack() {
-    document.querySelector('.container').style.display = 'none';
-    document.getElementById('introSection').style.display = 'block';
-    document.getElementById('backButton').style.display = 'none';
-    document.getElementById('sidebarHeader').style.display = 'block';
-    document.getElementById('sidebar').style.display = 'none';
-    document.getElementById('sidebar').innerHTML = '';
-    document.getElementById('content').innerHTML = '';
+function mainPage() {
+    const intro = document.getElementById('introSection');
+    const container = document.querySelector('.container');
+
+    intro.classList.remove('slide-fade-in', 'slide-fade-out');
+    container.classList.remove('slide-fade-in', 'slide-fade-out');
+
+    container.classList.add('slide-fade-out');
+
+    setTimeout(() => {
+        container.style.display = 'none';
+
+        intro.style.display = 'block';
+        intro.classList.add('slide-fade-in');
+
+        document.getElementById('backButton').style.display = 'none';
+        document.getElementById('sidebarHeader').style.display = 'block';
+        document.getElementById('sidebar').style.display = 'none';
+        document.getElementById('sidebar').innerHTML = '';
+        document.getElementById('content').innerHTML = '';
+    }, 500);
 }
 
 function parseText(fullText) {
@@ -73,7 +100,6 @@ function renderSidebar() {
     allBooks.forEach((book, index) => {
         const item = document.createElement('div');
         item.className = 'item';
-        //item.textContent = `${book.name} | Vytvořil: ${book.creator}`;
         item.textContent = `${book.name}`;
         item.onclick = () => {
             document.querySelectorAll('.list-panel .item').forEach(el => el.classList.remove('active'));
