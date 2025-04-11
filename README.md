@@ -1,1 +1,1 @@
-GHI convertor into HTML "websit" for Wow
+GHI convertor into HTML "website" for WOTLK
