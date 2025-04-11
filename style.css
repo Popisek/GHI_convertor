@@ -26,7 +26,7 @@ body.dark-mode {
     box-shadow: 0 0 10px rgba(0,0,0,0.03);
     display: flex;
     flex-direction: column;
-    height: 96vh; /* celé výšky obrazovky */
+    height: 96vh;
 }
 
 .dark-mode .sidebar {
@@ -133,7 +133,6 @@ body.dark-mode .list-panel .item.active {
     background-color: #505050;
     font-weight: bold;
 }
-
 
 .list-panel, .content-panel {
     background-color: #f7f7f7;
