@@ -24,6 +24,9 @@ body.dark-mode {
     border-right: 1px solid #ddd;
     text-align: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    height: 96vh; /* celé výšky obrazovky */
 }
 
 .dark-mode .sidebar {
@@ -33,6 +36,10 @@ body.dark-mode {
 
 #sidebar {
     display: none;
+}
+
+#sidebarHeader {
+    margin-bottom: 50px;
 }
 
 #themeToggle {
@@ -93,13 +100,11 @@ body.dark-mode {
 }
 
 .list-panel {
-    width: 100%;
-    margin-top: 20px;
+    flex: 1;
+    overflow-y: auto;
     background-color: #f7f7f7;
     border: 1px solid #ddd;
     border-radius: 4px;
-    max-height: 70vh;
-    overflow-y: auto;
     padding: 5px 0;
 }
 
@@ -148,7 +153,7 @@ body.dark-mode .list-panel, body.dark-mode .content-panel {
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 4px;
-    max-height: 70vh;
+    max-height: 89vh;
     overflow-y: auto;
 }
 
@@ -162,6 +167,17 @@ body.dark-mode .list-panel, body.dark-mode .content-panel {
 .small {
     font-size: 13px;
     color: #555;
+}
+
+.back-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #eee;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {

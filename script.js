@@ -1,13 +1,13 @@
 let allBooks = [];
 
-function loadLuaFile() {
-    const fileInput = document.getElementById('luaFile');
+function loadFile() {
+    const fileInput = document.getElementById('lua');
     const file = fileInput.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = function (e) {
-        parseLua(e.target.result);
+        parseText(e.target.result);
         renderSidebar();
         document.querySelector('.container').style.display = 'flex';
         document.getElementById('sidebar').style.display = 'block';
@@ -28,26 +28,26 @@ function goBack() {
     document.getElementById('content').innerHTML = '';
 }
 
-function parseLua(fullText) {
+function parseText(fullText) {
     allBooks = [];
-    const ghiMatch = fullText.match(/GHI_ItemData\s*=\s*\{([\s\S]*?)\n\}/);
-    if (!ghiMatch) {
-        document.getElementById('sidebar').innerHTML = 'Nepodařilo se najít GHI_ItemData = {...}';
+    const ghi = fullText.match(/GHI_ItemData\s*=\s*\{([\s\S]*?)\n\}/);
+    if (!ghi) {
+        document.getElementById('sidebar').innerHTML = 'Cannot find object';
         return;
     }
 
-    const luaText = ghiMatch[1];
-    const objectRegex = /\["([A-Za-z]+_\d+)"\]\s?=\s?\{([\s\S]*?)(?=\n\s*\["[A-Za-z]+_\d+"\]\s?=|\n?\}\s*,?\n?$)/g;
-    let match;
+    const txt = ghi[1];
+    const object = /\["([A-Za-z]+_\d+)"\]\s?=\s?\{([\s\S]*?)(?=\n\s*\["[A-Za-z]+_\d+"\]\s?=|\n?\}\s*,?\n?$)/g;
+    let loop;
 
-    while ((match = objectRegex.exec(luaText)) !== null) {
-        const block = match[2];
+    while ((loop = object.exec(txt)) !== null) {
+        const block = loop[2];
 
-        const nameMatch = block.match(/\["name"\]\s?=\s?"(.*?)"/);
-        const creatorMatch = block.match(/\["creater"\]\s?=\s?"(.*?)"/);
+        const nameId = block.match(/\["name"\]\s?=\s?"(.*?)"/);
+        const creatorId = block.match(/\["creater"\]\s?=\s?"(.*?)"/);
 
-        const name = nameMatch ? nameMatch[1] : "Nenalezeno";
-        const creator = creatorMatch ? creatorMatch[1] : "Nenalezeno";
+        const name = nameId ? nameId[1] : "Nenalezeno";
+        const creator = creatorId ? creatorId[1] : "Nenalezeno";
 
         const pageSections = block.split(/},\s*-- \[\d+\]/);
         let pages = [];
@@ -73,7 +73,8 @@ function renderSidebar() {
     allBooks.forEach((book, index) => {
         const item = document.createElement('div');
         item.className = 'item';
-        item.textContent = `${book.name}   |   Vytvořil: ${book.creator}`;
+        //item.textContent = `${book.name} | Vytvořil: ${book.creator}`;
+        item.textContent = `${book.name}`;
         item.onclick = () => {
             document.querySelectorAll('.list-panel .item').forEach(el => el.classList.remove('active'));
             item.classList.add('active');
