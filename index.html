@@ -2,12 +2,14 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GHI převodník</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-mode"></body>
-<body>
+<body class="dark-mode">
 <div class="layout">
     <aside class="sidebar">
         <div id="sidebarHeader">
@@ -15,39 +17,48 @@
             <h2>Bradavický GHI batoh</h2>
             <p class="subtitle">Bradavický expres na učebnice</p>
         </div>
-        <button id="backButton" class="back-button" onclick="mainPage()" style="display:none">ZPĚT</button>
+        <button id="backButton" class="back-button" onclick="mainPage()" style="display:none">
+            <span class="back-arrow">←</span> Zpět na úvod
+        </button>
         <div class="list-panel" id="sidebar"></div>
     </aside>
 
     <main class="main">
+        <button id="themeToggle" onclick="toggleTheme()" aria-label="Přepnout motiv">🌞</button>
+
         <section class="intro" id="introSection">
-            <h2>Jak používat GHI batoh 🧳 ✨</h2>
-            <p>Tato stránka slouží k jednoduchému načtení a zobrazení obsahu GHI batohu ze hry <strong>Bradavice Online</strong>. Stačí udělat jen pár kroků:</p>
-            <ol>
-                <li><strong>Najděte soubor</strong> <code>GHI.lua</code><br>
-                    Tento soubor se automaticky ukládá ve složce s vaším účtem. Obvykle ho najdete zde:<br>
-                    <code>C:\Cesta ke hře\Bradavice Online\WTF\Account\Jméno_účtu\Bradavice Online\Postava\SavedVariables\GHI.lua</code>
+            <p class="eyebrow">Bradavice Online · WOTLK</p>
+            <h2>Jak používat GHI batoh <span class="emoji">🧳</span></h2>
+            <p class="lead">Tato stránka načte a přehledně zobrazí obsah GHI batohu ze hry <strong>Bradavice Online</strong>. Stačí pár kroků:</p>
+
+            <ol class="steps">
+                <li>
+                    <strong>Najděte soubor</strong> <code>GHI.lua</code>
+                    <p class="step-note">Ukládá se automaticky ve složce s vaším účtem, obvykle zde:</p>
+                    <code class="path">C:\Cesta ke hře\Bradavice Online\WTF\Account\Jméno_účtu\Bradavice Online\Postava\SavedVariables\GHI.lua</code>
                 </li>
-                <li><strong>Nahrajte soubor</strong><br>
-                    Klikněte na tlačítko <em>Vybrat soubor</em> a nahrajte svůj <code>GHI.lua</code>. Stránka jej zpracuje automaticky.
+                <li>
+                    <strong>Nahrajte soubor</strong>
+                    <p class="step-note">Vyberte svůj <code>GHI.lua</code> níže. Stránka jej zpracuje automaticky.</p>
                 </li>
-                <li><strong>Prohlížejte obsah</strong><br>
-                    Po načtení se zobrazí seznam knih. Klikněte na název a čtěte.
+                <li>
+                    <strong>Prohlížejte obsah</strong>
+                    <p class="step-note">Po načtení se zobrazí seznam knih. Klikněte na název a čtěte.</p>
                 </li>
             </ol>
-            <hr>
-            <h3>Vyberte váš GHI.lua soubor uložený z Bradavic</h3>
-            <p class="small">Obsah knihy se zobrazí zde, a můžete si ho přehledně prohlížet v čitelném formátu.</p>
-            <input type="file" id="lua" accept=".lua">
-            <button onclick="loadFile()">Převést</button>
+
+            <div class="upload-card">
+                <h3>Vyberte váš <code>GHI.lua</code> soubor</h3>
+                <p class="small">Obsah knihy se zobrazí v čitelném formátu.</p>
+                <input type="file" id="lua" accept=".lua">
+                <button class="convert-button" onclick="loadFile()">Převést knihy</button>
+            </div>
         </section>
 
         <div class="container" style="display:none">
             <div id="sidebar" class="list-panel"></div>
             <div id="content" class="content-panel"></div>
         </div>
-
-        <button id="themeToggle" onclick="toggleTheme()">🌞</button>
     </main>
 </div>
 
